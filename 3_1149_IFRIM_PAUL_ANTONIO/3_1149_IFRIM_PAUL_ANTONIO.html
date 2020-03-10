@@ -1,41 +1,58 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Vizualizare Serie de timp</title>
-        <link href="3_1149_IFRIM_PAUL_ANTONIO.css"  rel="stylesheet" type="text/css">
-        <script src="./jquery-3.4.1.min.js"></script>
-        <script type="text/javascript" src="./media/data.json"></script>
-    </head>
 
-    <body>
+<head>
+    <meta charset="utf-8">
+    <title>Vizualizare Serie de timp</title>
+    <link rel="stylesheet" type="text/css" href="./3_1149_IFRIM_PAUL_ANTONIO.css">
+    <script type="text/javascript" src="./media/data.json"></script>
+    <style>
+        #fromYear,
+        #toYear {
+            margin: 5px 10px 10px 0px;
+            padding: 5px;
+            border: 3px solid green;
+            border-radius: 7px;
+            width: 185px;
+        }
+        
+        table {
+            margin: 10px 10px 10px 0px;
+        }
+        
+        table,
+        th,
+        td {
+            border: 3px solid green;
+            border-radius: 7px;
+        }
+        
+        div#dataTable>button {
+            margin: 5px 10px 5px 0;
+        }
+    </style>
+</head>
 
-        <div id="menu">
-            <h4>Vizualizare serie de timp</h4>
-            <h6>*venitul per cap de locuitor</h6>
-            <ul styel="list-style-type: none">
-                <li><button class="btn" onclick="onClickShowTable()">Afisare date sub forma tabelara</button></li>
-            </ul>
+<body>
+    <div id="menu">
+        <h4>Vizualizare serie de timp</h4>
+        <h6>*venitul per cap de locuitor</h6>
+        <ul styel="list-style-type: none">
+            <li><button class="btn" onclick="onClickShowTableMenu()">Afisare date sub forma tabelara</button></li>
+        </ul>
+    </div>
+
+    <div id="dataTable">
+        <div>
+            <input type="number" id="fromYear" placeholder="From">
+            <input type="number" id="toYear" placeholder="To">
         </div>
 
-        <!-- <div style="display: none;" id="tableForm">
-            
-        </div> -->
+        <button class="btn" onclick="generateTable()">Generate Table</button>
+        <button class="btn" onclick="backToMenu()">Back</button>
+    </div>
 
-        <div id="dataTable">
-            <form >
-                <input type="text">
-                <input type="text">
-                <input type="submit">
-            </form>
+    <script type="text/javascript" src="./3_1149_IFRIM_PAUL_ANTONIO.js"></script>
+</body>
 
-            <table id="myTable">
-                <thead></thead>
-                <tbody></tbody>
-            </table>
-            <button onclick="backToMenu()">Back</button>
-        </div>
-
-        <script type="text/javascript" src="3_1149_IFRIM_PAUL_ANTONIO.js"></script>
-    </body>
 </html>
