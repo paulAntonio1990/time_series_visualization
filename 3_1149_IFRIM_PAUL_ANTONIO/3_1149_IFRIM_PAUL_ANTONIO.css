@@ -38,10 +38,6 @@ ul {
     font-size: 16px;
 }
 
-div#dataTable>button {
-    background-color: yellow;
-}
-
 #dataTable {
     display: none;
 }
