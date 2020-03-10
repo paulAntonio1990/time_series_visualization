@@ -118,3 +118,7 @@ function appendDataCells(table, row, characteristics, from, to) {
         }
     }
 }
+
+function displayHystogramMenu() {
+    console.log("It was clicked");
+}

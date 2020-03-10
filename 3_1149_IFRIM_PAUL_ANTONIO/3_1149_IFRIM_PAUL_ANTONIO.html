@@ -7,29 +7,7 @@
     <link rel="stylesheet" type="text/css" href="./3_1149_IFRIM_PAUL_ANTONIO.css">
     <script type="text/javascript" src="./media/data.json"></script>
     <style>
-        #fromYear,
-        #toYear {
-            margin: 5px 10px 10px 0px;
-            padding: 5px;
-            border: 3px solid green;
-            border-radius: 7px;
-            width: 185px;
-        }
-        
-        table {
-            margin: 10px 10px 10px 0px;
-        }
-        
-        table,
-        th,
-        td {
-            border: 3px solid green;
-            border-radius: 7px;
-        }
-        
-        div#dataTable>button {
-            margin: 5px 10px 5px 0;
-        }
+
     </style>
 </head>
 
@@ -38,6 +16,7 @@
         <h4>Vizualizare serie de timp</h4>
         <h6>*venitul per cap de locuitor</h6>
         <ul styel="list-style-type: none">
+            <li><button class="btn" onclick="displayHystogramMenu()">Generare histograma</button></li>
             <li><button class="btn" onclick="onClickShowTableMenu()">Afisare date sub forma tabelara</button></li>
         </ul>
     </div>

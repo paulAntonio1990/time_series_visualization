@@ -20,7 +20,7 @@ ul {
     border: green 2px solid;
     position: absolute;
     width: 500px;
-    height: 150px;
+    height: 200px;
     border-radius: 10px;
     text-align: center;
     margin: auto;
@@ -36,6 +36,7 @@ ul {
     text-decoration: none;
     font-family: 'Courier New', Courier, monospace;
     font-size: 16px;
+    margin: 7px;
 }
 
 #dataTable {
@@ -52,4 +53,28 @@ ul {
     text-decoration: none;
     font-family: 'Courier New', Courier, monospace;
     font-size: 16px;
+}
+
+#fromYear,
+#toYear {
+    margin: 5px 10px 10px 0px;
+    padding: 5px;
+    border: 3px solid green;
+    border-radius: 7px;
+    width: 185px;
+}
+
+table {
+    margin: 10px 10px 10px 0px;
+}
+
+table,
+th,
+td {
+    border: 3px solid green;
+    border-radius: 7px;
+}
+
+div#dataTable>button {
+    margin: 5px 10px 5px 0;
 }
