@@ -1,6 +1,9 @@
 var dataJSON = {};
 const MIN = 1987;
 const MAX = 2017;
+const pipe = (...functions) => args => functions.reduce((arg, fn) => fn(arg), args);
+const filter = arg => array => array.filter(arg);
+const map = arg => array => array.map(arg);
 
 fetch("./media/data.json").then(function(res) {
     return res.json();
@@ -120,5 +123,95 @@ function appendDataCells(table, row, characteristics, from, to) {
 }
 
 function displayHystogramMenu() {
-    console.log("It was clicked");
+    var menu = document.getElementById("menu");
+    menu.style.display = "none";
+
+    var histogram = document.getElementById("histogram");
+    histogram.style.display = "inline";
+
+    var entities = document.getElementById("entities");
+    dataJSON.forEach(data => {
+        var entityOption = document.createElement("option");
+        entityOption.setAttribute("value", data.country);
+
+        var entityOptionTitle = document.createTextNode(data.country);
+        entityOption.append(entityOptionTitle);
+        entities.append(entityOption);
+    });
+
+    var characteristics = document.getElementById("characteristics");
+    dataJSON[0].characteristics.forEach(characteristic => {
+        var characteristicOption = document.createElement("option");
+        characteristicOption.setAttribute("value", characteristic.name);
+
+        var characteristicOptionTitle = document.createTextNode(characteristic.name);
+        characteristicOption.append(characteristicOptionTitle);
+        characteristics.append(characteristicOption);
+    });
+}
+
+function backToMenuFromHistogram() {
+    var menu = document.getElementById("menu");
+    menu.style.display = "inline";
+
+    var histogram = document.getElementById("histogram");
+    histogram.style.display = "none";
+
+    var canvasHistogram = document.getElementById("canvas-histogram");
+    canvasHistogram.style.display = "none";
+
+    clearDropDownOptions();
+}
+
+function clearDropDownOptions() {
+    var entities = document.getElementById("entities");
+    while (entities.firstChild) {
+        entities.removeChild(entities.lastChild);
+    }
+
+    var characteristics = document.getElementById("characteristics");
+    while (characteristics.firstChild) {
+        characteristics.removeChild(characteristics.lastChild);
+    }
+}
+
+function generateHistogram() {
+    var selectedEntity = document.getElementById("entities").value;
+    var selectedCharacteristic = document.getElementById("characteristics").value;
+
+    selectedData = (pipe(
+        filter(arr => { return arr.country == selectedEntity; }),
+        map(arr => {
+            var char = arr.characteristics.filter(ch => ch.name == selectedCharacteristic)
+            return char[0].values;
+        })
+    )(dataJSON))[0];
+
+    drawHistogram(selectedData, selectedCharacteristic);
+}
+
+function drawHistogram(inputData, selectedCharacteristic) {
+    var canvasHistogram = document.getElementById("canvas-histogram");
+    var context = canvasHistogram.getContext("2d");
+    canvasHistogram.style.display = "inline";
+
+    context.fillStyle = "red";
+    context.strokeStyle = "green"
+    context.lineWidth = 2;
+    context.clearRect(0, 0, canvasHistogram.width, canvasHistogram.height);
+
+    var space = 10;
+    var xCoord = space;
+    var width = 30;
+    inputData.forEach((v, k) => {
+        context.beginPath();
+        if (selectedCharacteristic != 'market value of listed companies (% GDP)') {
+            context.rect(xCoord, canvasHistogram.height - v[MIN + k] * 10, width, v[MIN + k] * 10);
+        } else {
+            context.rect(xCoord, canvasHistogram.height - v[MIN + k], width, v[MIN + k]);
+        }
+        context.fill();
+        context.stroke();
+        xCoord += (width + space);
+    })
 }

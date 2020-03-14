@@ -43,18 +43,6 @@ ul {
     display: none;
 }
 
-#btn_back {
-    background-color: green;
-    border: none;
-    color: white;
-    border-radius: 8px;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
-}
-
 #fromYear,
 #toYear {
     margin: 5px 10px 10px 0px;
@@ -77,4 +65,35 @@ td {
 
 div#dataTable>button {
     margin: 5px 10px 5px 0;
+}
+
+#histogram {
+    display: none;
+}
+
+#canvas-histogram {
+    border: 2px solid green;
+    background-image: linear-gradient(black, white, gray);
+    display: none;
+}
+
+.histogram-dropdown {
+    margin: 5px 10px 10px 0px;
+    padding: 5px;
+    border: 3px solid green;
+    border-radius: 7px;
+    width: 185px;
+}
+
+.btn-histogram {
+    background-color: green;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    margin: 7px 7px 7px 0px;
 }

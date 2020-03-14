@@ -6,6 +6,7 @@
     <title>Vizualizare Serie de timp</title>
     <link rel="stylesheet" type="text/css" href="./3_1149_IFRIM_PAUL_ANTONIO.css">
     <script type="text/javascript" src="./media/data.json"></script>
+    <!-- <script type="text/javascript" src="./3_1149_IFRIM_PAUL_ANTONIO.js"></script> -->
     <style>
 
     </style>
@@ -29,6 +30,19 @@
 
         <button class="btn" onclick="generateTable()">Generate Table</button>
         <button class="btn" onclick="backToMenu()">Back</button>
+    </div>
+
+    <div id="histogram">
+        <div>
+            <select id="entities" class="histogram-dropdown"></select>
+            <select id="characteristics" class="histogram-dropdown"></select>
+        </div>
+
+        <button class="btn-histogram" onclick="generateHistogram()">Generate Histogram</button>
+        <button class="btn-histogram" onclick="backToMenuFromHistogram()">Back</button>
+
+        <br>
+        <canvas id="canvas-histogram" height="300" width="1250"></canvas>
     </div>
 
     <script type="text/javascript" src="./3_1149_IFRIM_PAUL_ANTONIO.js"></script>
